@@ -87,5 +87,63 @@
 		"question": "如何在Windows的cmd和Linux的bash下使用命令查看当前目录列表（由英文逗号分隔）",
 		"correct_answer": "dir,ls",
 		"analysis": "自己查"
+	},
+	"11": {
+		"question": "如果你的鼠标、触控板和键盘Ctrl、V键都坏了，你需要马上粘贴一段文本，你会怎么粘贴",
+		"options": {
+			"A": "Shift+Insert",
+			"B": "Ctrl+W",
+			"C": "Ctrl+Insert",
+			"D": "不懂"
+		},
+		"correct_answer": "A"
+	},
+	"12": {
+		"question": "下列代码中能正确将 \"Bilibili\"显示在控制台上的是",
+		"options": {
+			"A": "print(\"Hello, World!\")",
+			"B": "给up三连",
+			"C": "print(\"bilibili\")",
+			"D": "print(\"Bilibili\")"
+		},
+		"correct_answer": "D"
+	},
+	"13": {
+		"question": "张三在文具店买了 n 个中性笔，每个 m 元。下列哪个屁眼通红代码可以正确计算该同学的总花费",
+		"options": {
+			"A": "m+n",
+			"B": "m-n",
+			"C": "m*n",
+			"D": "m/n"
+		},
+		"correct_answer": "C"
+	},
+	"14": {
+		"question": "根据名称2020-%E6%8B%9C%E5%B9%B4%E7%A5%AD%E6%B4%BB%E5%8A%A8.jpg，这是B站什么时候拜年纪活动",
+		"options": {
+			"A": "2020",
+			"B": "2022",
+			"C": "2019",
+			"D": "2018"
+		},
+		"correct_answer": "A"
+	},
+	"15": {
+		"question": "请选D",
+		"options": {
+			"A": "2020",
+			"B": "千万别选我！",
+			"C": "114514",
+			"D": "选我才是正确的！（doge）"
+		},
+		"correct_answer": "B"
+	},
+	"16": {
+		"question": "turtle库中“dot(30)”表示绘制一个直径为30的实心圆",
+		"options": {
+			"A": "对",
+			"B": "错"
+		},
+		"correct_answer": "A"
 	}
 }

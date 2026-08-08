@@ -744,7 +744,7 @@
                 item.innerHTML = `
                     <div class="detail-question">${formatQuestionText(ans.question.question)}</div>
                     ${answerHtml}
-                    <div class="detail-analysis"><strong>解析：</strong>${formatQuestionText(ans.question.analysis)}</div>
+                    ${ans.question.analysis ? `<div class="detail-analysis"><strong>解析：</strong>${formatQuestionText(ans.question.analysis)}</div>` : ''}
                 `;
 
                 detailsList.appendChild(item);
