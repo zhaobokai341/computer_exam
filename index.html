@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算机模拟考试系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            border: 1px solid #e8e8e8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .difficulty-select {
+            text-align: center;
+        }
+
+        .difficulty-select h2 {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .difficulty-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .diff-btn {
+            padding: 12px 28px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #fff;
+        }
+
+        .diff-btn.easy {
+            background: linear-gradient(135deg, #56ab2f, #a8e063);
+        }
+
+        .diff-btn.medium {
+            background: linear-gradient(135deg, #f2994a, #f2c94c);
+        }
+
+        .diff-btn.hard {
+            background: linear-gradient(135deg, #eb3349, #f45c43);
+        }
+
+        .diff-btn.extremly_hard {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+        }
+
+        .diff-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .diff-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .quiz-header .progress {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .quiz-header .score {
+            color: #1677ff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            color: #1a1a1a;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+        }
+
+        .question-text img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .question-text code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Fira Code", "Consolas", monospace;
+            font-size: 14px;
+        }
+
+        .options-list {
+            list-style: none;
+        }
+
+        .options-list li {
+            margin-bottom: 12px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            background: #fff;
+            font-size: 14px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #333;
+        }
+
+        .option-btn:hover {
+            border-color: #1677ff;
+            background: #f5f8ff;
+        }
+
+        .option-btn.selected {
+            border-color: #1677ff;
+            background: #e6f0ff;
+        }
+
+        .option-btn.correct {
+            border-color: #52c41a;
+            background: #f6ffed;
+        }
+
+        .option-btn.wrong {
+            border-color: #ff4d4f;
+            background: #fff2f0;
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .fill-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .fill-input:focus {
+            outline: none;
+            border-color: #1677ff;
+        }
+
+        .submit-btn, .next-btn, .restart-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            background: #1677ff;
+            color: #fff;
+        }
+
+        .next-btn {
+            background: #1677ff;
+            color: #fff;
+        }
+
+        .submit-btn:hover, .next-btn:hover {
+            background: #4096ff;
+        }
+
+        .restart-btn {
+            background: #1677ff;
+            color: #fff;
+        }
+
+        .restart-btn:hover {
+            background: #4096ff;
+        }
+
+        .result-container {
+            text-align: center;
+        }
+
+        .result-score {
+            font-size: 64px;
+            font-weight: 700;
+            color: #1677ff;
+            margin: 20px 0;
+        }
+
+        .result-score span {
+            font-size: 20px;
+            color: #999;
+        }
+
+        .result-message {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .result-details {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .result-details h3 {
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .detail-item {
+            background: #fafafa;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #f0f0f0;
+            border-left: 3px solid #1677ff;
+        }
+
+        .detail-item.correct-item {
+            border-left-color: #52c41a;
+        }
+
+        .detail-item.wrong-item {
+            border-left-color: #ff4d4f;
+        }
+
+        .detail-question {
+            font-size: 15px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .detail-question img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .detail-question code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Fira Code", "Consolas", monospace;
+            font-size: 14px;
+        }
+
+        .detail-answer {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .detail-answer .user-answer {
+            color: #ff4d4f;
+        }
+
+        .detail-answer .correct-answer {
+            color: #52c41a;
+            font-weight: 600;
+        }
+
+        .detail-analysis {
+            font-size: 14px;
+            color: #666;
+            background: #fff;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 10px;
+            line-height: 1.6;
+            border: 1px solid #f0f0f0;
+        }
+
+        .detail-analysis code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Fira Code", "Consolas", monospace;
+            font-size: 13px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 16px;
+            background: #fff2f0;
+            border-radius: 4px;
+            color: #ff4d4f;
+            margin-top: 20px;
+            border: 1px solid #ffccc7;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .multi-hint {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .difficulty-buttons {
+                flex-direction: column;
+            }
+
+            .diff-btn {
+                width: 100%;
+            }
+
+            .result-score {
+                font-size: 56px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>计算机模拟考试系统</h1>
+
+        <div id="difficultyScreen" class="difficulty-select">
+            <h2>请选择难度等级</h2>
+            <div class="difficulty-buttons">
+                <button class="diff-btn easy" onclick="startQuiz('easy')">简单</button>
+                <button class="diff-btn medium" onclick="startQuiz('medium')">中等</button>
+                <button class="diff-btn hard" onclick="startQuiz('hard')">困难</button>
+                <button class="diff-btn extremly_hard" onclick="startQuiz('extremly_hard')">极难</button>
+            </div>
+            <div id="loadingMsg" class="loading hidden">加载中...</div>
+            <div id="errorMsg" class="error-message hidden"></div>
+        </div>
+
+        <div id="quizScreen" class="hidden">
+            <div class="quiz-header">
+                <span class="progress" id="progressText">第 1/10 题</span>
+                <span class="score" id="scoreText">得分：0</span>
+            </div>
+            <div class="question-container">
+                <div class="question-text" id="questionText"></div>
+                <div id="multiHint" class="multi-hint hidden">（多选题，可选择多个选项）</div>
+                <ul class="options-list" id="optionsList"></ul>
+                <div id="fillInputContainer" class="hidden">
+                    <input type="text" class="fill-input" id="fillInput" placeholder="请输入答案...">
+                </div>
+            </div>
+            <button class="submit-btn" id="submitBtn" onclick="submitAnswer()">提交答案</button>
+            <button class="next-btn hidden" id="nextBtn" onclick="nextQuestion()">下一题</button>
+        </div>
+
+        <div id="resultScreen" class="hidden">
+            <div class="result-container">
+                <h2>考试结束</h2>
+                <div class="result-score" id="finalScore">0<span>/100</span></div>
+                <div class="result-message" id="resultMessage"></div>
+                <button class="restart-btn" onclick="restart()">重新开始</button>
+                <div class="result-details">
+                    <h3>答题详情</h3>
+                    <div id="detailsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const QUESTION_COUNT = 10;
+        const SCORE_PER_QUESTION = 10;
+
+        let questions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+        let selectedOptions = [];
+        let isAnswered = false;
+
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function showScreen(screenId) {
+            document.getElementById('difficultyScreen').classList.add('hidden');
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        async function startQuiz(difficulty) {
+            const loadingMsg = document.getElementById('loadingMsg');
+            const errorMsg = document.getElementById('errorMsg');
+            loadingMsg.classList.remove('hidden');
+            errorMsg.classList.add('hidden');
+
+            try {
+                const response = await fetch(`problems/${difficulty}.json`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const data = await response.json();
+
+                const allQuestions = Object.entries(data).map(([id, q]) => ({
+                    id,
+                    ...q
+                }));
+
+                if (allQuestions.length === 0) {
+                    throw new Error('题库为空');
+                }
+
+                questions = shuffleArray(allQuestions).slice(0, QUESTION_COUNT);
+                currentIndex = 0;
+                score = 0;
+                userAnswers = [];
+
+                showScreen('quizScreen');
+                renderQuestion();
+            } catch (err) {
+                loadingMsg.classList.add('hidden');
+                errorMsg.textContent = `加载失败：${err.message}，请检查文件是否存在`;
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function renderQuestion() {
+            const q = questions[currentIndex];
+            isAnswered = false;
+            selectedOptions = [];
+
+            document.getElementById('progressText').textContent = `第 ${currentIndex + 1}/${QUESTION_COUNT} 题`;
+            document.getElementById('scoreText').textContent = `得分：${score}`;
+
+            const questionTextEl = document.getElementById('questionText');
+            questionTextEl.innerHTML = formatQuestionText(q.question);
+
+            const optionsList = document.getElementById('optionsList');
+            const fillInputContainer = document.getElementById('fillInputContainer');
+            const multiHint = document.getElementById('multiHint');
+            const submitBtn = document.getElementById('submitBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            optionsList.innerHTML = '';
+            fillInputContainer.classList.add('hidden');
+            multiHint.classList.add('hidden');
+            submitBtn.classList.remove('hidden');
+            nextBtn.classList.add('hidden');
+
+            if (q.options) {
+                const correctAnswer = q.correct_answer.replace(/\s/g, '');
+                const isMulti = correctAnswer.length > 1;
+
+                if (isMulti) {
+                    multiHint.classList.remove('hidden');
+                }
+
+                for (const [key, value] of Object.entries(q.options)) {
+                    const li = document.createElement('li');
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.textContent = `${key}. ${value}`;
+                    btn.dataset.option = key;
+                    btn.onclick = () => toggleOption(btn, key, isMulti);
+                    li.appendChild(btn);
+                    optionsList.appendChild(li);
+                }
+            } else {
+                fillInputContainer.classList.remove('hidden');
+                document.getElementById('fillInput').value = '';
+                document.getElementById('fillInput').disabled = false;
+            }
+        }
+
+        function formatQuestionText(text) {
+            return text
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                .replace(/\n/g, '<br>');
+        }
+
+        function toggleOption(btn, key, isMulti) {
+            if (isAnswered) return;
+
+            if (isMulti) {
+                const idx = selectedOptions.indexOf(key);
+                if (idx > -1) {
+                    selectedOptions.splice(idx, 1);
+                    btn.classList.remove('selected');
+                } else {
+                    selectedOptions.push(key);
+                    btn.classList.add('selected');
+                }
+            } else {
+                document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+                selectedOptions = [key];
+                btn.classList.add('selected');
+            }
+        }
+
+        function submitAnswer() {
+            if (isAnswered) return;
+
+            const q = questions[currentIndex];
+            let userAnswer = '';
+
+            if (q.options) {
+                if (selectedOptions.length === 0) {
+                    alert('请至少选择一个选项');
+                    return;
+                }
+                userAnswer = selectedOptions.sort().join('');
+            } else {
+                const input = document.getElementById('fillInput');
+                userAnswer = input.value.trim();
+                if (!userAnswer) {
+                    alert('请输入答案');
+                    return;
+                }
+                input.disabled = true;
+            }
+
+            isAnswered = true;
+            const correctAnswer = q.correct_answer.replace(/\s/g, '');
+            const isCorrect = userAnswer === correctAnswer;
+
+            if (isCorrect) {
+                score += SCORE_PER_QUESTION;
+                document.getElementById('scoreText').textContent = `得分：${score}`;
+            }
+
+            userAnswers.push({
+                question: q,
+                userAnswer,
+                correctAnswer,
+                isCorrect
+            });
+
+            if (q.options) {
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    const opt = btn.dataset.option;
+                    btn.disabled = true;
+                    if (correctAnswer.includes(opt)) {
+                        btn.classList.add('correct');
+                    } else if (selectedOptions.includes(opt) && !correctAnswer.includes(opt)) {
+                        btn.classList.add('wrong');
+                    }
+                });
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            submitBtn.classList.add('hidden');
+
+            if (currentIndex < QUESTION_COUNT - 1) {
+                nextBtn.textContent = '下一题';
+            } else {
+                nextBtn.textContent = '查看结果';
+            }
+            nextBtn.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < QUESTION_COUNT) {
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            showScreen('resultScreen');
+            document.getElementById('finalScore').innerHTML = `${score}<span>/${QUESTION_COUNT * SCORE_PER_QUESTION}</span>`;
+
+            let message = '';
+            if (score === 100) {
+                message = '满分！太棒了！';
+            } else if (score >= 80) {
+                message = '优秀！继续保持！';
+            } else if (score >= 60) {
+                message = '及格了，还可以更好！';
+            } else if (score >= 40) {
+                message = '还需努力！';
+            } else {
+                message = '加油，多复习再来！';
+            }
+            document.getElementById('resultMessage').textContent = message;
+
+            const detailsList = document.getElementById('detailsList');
+            detailsList.innerHTML = '';
+
+            userAnswers.forEach((ans, idx) => {
+                const item = document.createElement('div');
+                item.className = `detail-item ${ans.isCorrect ? 'correct-item' : 'wrong-item'}`;
+
+                let answerHtml = '';
+                if (ans.question.options) {
+                    answerHtml = `
+                        <div class="detail-answer">
+                            你的答案：<span class="${ans.isCorrect ? 'correct-answer' : 'user-answer'}">${ans.userAnswer}</span>
+                            ${!ans.isCorrect ? `<br>正确答案：<span class="correct-answer">${ans.correctAnswer}</span>` : ''}
+                        </div>
+                    `;
+                } else {
+                    answerHtml = `
+                        <div class="detail-answer">
+                            你的答案：<span class="${ans.isCorrect ? 'correct-answer' : 'user-answer'}">${ans.userAnswer}</span>
+                            ${!ans.isCorrect ? `<br>正确答案：<span class="correct-answer">${ans.correctAnswer}</span>` : ''}
+                        </div>
+                    `;
+                }
+
+                item.innerHTML = `
+                    <div class="detail-question">${formatQuestionText(ans.question.question)}</div>
+                    ${answerHtml}
+                    <div class="detail-analysis"><strong>解析：</strong>${formatQuestionText(ans.question.analysis)}</div>
+                `;
+
+                detailsList.appendChild(item);
+            });
+        }
+
+        function restart() {
+            showScreen('difficultyScreen');
+        }
+    </script>
+</body>
+</html>
