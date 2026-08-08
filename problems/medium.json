@@ -1,1 +1,88 @@
-{}
+{
+	"1": {
+		"question": "'𓃆'对应的Unicode码是多少？（十进制）",
+		"correct_answer": "78022"
+	},
+	"2": {
+		"question": "@SYSTEM-RAMOS-ZDY 在____年（填4位数字）__月__日（两位数字，不足用前导0）发布了动态《今天上了个医院🏥，留个纪念》，@________极客 对此进行了讨论并迅速火爆全网（所有填空用英文逗号分割）",
+		"correct_answer": "2023,08,24,传说当中的帅锅-",
+		"analysis": "详见全网"
+	},
+	"3": {
+		"question": "这个Python代码`print(print(lambda x: print(print(\"Chicken you are so beautiful\"))(1)))`会输出什么？",
+		"options": {
+			"A": "Chicken you are so beautiful\\nNone\\n<function <lambda> at 0x7fxxxxxxxxxx>\\nNone",
+			"B": "<function <lambda> at 0x7fxxxxxxxxxx>\\nNone",
+			"C": "直接报错",
+			"D": "Chicken you are so beautiful\\nNone\\nNone"
+		},
+		"correct_answer": "B",
+		"analysis": "首先lambda不会调用自身，那个括号`(1)`是位于函数内部，不过这个函数调用会报错，但是因为Python是解释性语言，因为他不会执行所有会忽略掉他，lambda外层的print是打印这个函数的内存地址，然后以`None`返回再上一层print，然后这个print就打印了print的返回值——`None`"
+	},
+	"4": {
+		"question": "用fastboot来解锁新/旧版通用类型手机的bootloader的命令是什么：",
+		"options": {
+			"A": "fastboot bootloader unlock",
+			"B": "fastboot flashing unlock",
+			"C": "fastboot oem unlock",
+			"D": "fastboot unlock BL"
+		},
+		"correct_answer": "BC",
+		"analysis": "`fastboot flashing unlock`用来解锁现代手机，`fastboot oem unlock`用来解锁旧版手机"
+	},
+	"5": {
+		"question": "有一个m*n格的迷宫(表示有m行、n列)，其中有可走的也有不可走的，\n如果用1表示可以走，0表示不可以走，文件读入这m*n个数据和起始点、结束点(起始点和结束点都是用两个数据来描述的，分别表示这个点的行号和列号)。\n现在要你编程找出所有可行的道路，要求所走的路中没有重复的点，走时只能是上下左右四个方向。\n如果一条路都不可行，则输出相应信息(用-1表示无路)。\n这个问题适合用bfs搜索吗，如果不行，应用什么方法。",
+		"options": {
+			"A": "适合",
+			"B": "不适合，应用dfs+Dijkstra",
+			"C": "不适合，应用dfs+回溯",
+			"D": "俺不知道，给@Windows卸载程序 一个大大的三联和关注吧"
+		},
+		"correct_answer": "C",
+		"analysis": "bfs适合求最短路径，并不适合求出所有路径，如果要用dfs，Dijkstra一般是和bfs配合的，正确方法是用dfs遍历每个迷宫路径，用回溯来标记，撤回迷宫探路情况，同时也能用来记录当前迷宫走的路径"
+	},
+	"6": {
+		"question": "`Pixel Xpert`模块是什么，适用于哪个系统",
+		"options": {
+			"A": "系统UI美化/高度自定义工具，适用于任何系统",
+			"B": "系统对电池和硬件功能上的调度工具，仅适用Pixel",
+			"C": "系统UI美化/高度自定义工具，仅适用Pixel",
+			"D": "系统对电池和硬件功能上的调度工具，仅适用于小米，Samsung，ONEPlus，鸿蒙的系统"
+		},
+		"correct_answer": "C"
+	},
+	"7": {
+		"question": "观看这个视频\n<video src=\"images/medium/Learn_C++_in_60s.mp4\" controls></video>\n下面说法视频有提及到且正确的是：",
+		"options": {
+			"A": "C++在1985年出版",
+			"B": "C++对比机器语言和Python，属于高级语言",
+			"C": "C++可直接访问和操作内存"
+		},
+		"correct_answer": "AC"
+	},
+	"8": {
+		"question": "已知`a < c < 0 < b`，请你化简`|a + b| - |c - b|`，结果是什么",
+		"options": {
+			"A": "-a + c + 2b",
+			"B": "-a + c - 2b",
+			"C": "2a + 2c - 2b",
+			"D": "a - c + 2b"
+		},
+		"correct_answer": "B",
+		"analysis": "  |a + b| - |c - b|\n= -a - b + c - b\n= -a + (-b) + c + (-b)\n= -a + c + (-2b)\n= -a + c - 2b"
+	},
+	"9": {
+		"question": "下面图片从上往下且从左往右数，分别是Windows 3.1 Tan, Windows _ Tan, Windows __ Tan, Windows ____ Tan, Windows __ Tan, Windows Server ____ Tan and Windows __ Tan\n<img src=\"images/medium/Windows_3.1_tan.png\"><img src=\"images/medium/Windows_7_tan.png\"><img src=\"images/medium/Windows_95_tan.png\"><img src=\"images/medium/Windows_2000_tan.png\"><img src=\"images/medium/Windows_me_tan.png\"><img src=\"images/medium/Windows_server_2003_tan.png\"><img src=\"images/medium/Windows_xp_tan.png\">\n（请严格按照Windows命名名称填写，比如`Windows XP`而不是`Windows xp`或`Windows Xp`）（用英文逗号隔开）",
+		"correct_answer": "7,95,2000,Me,2003,XP"
+	},
+	"10": {
+		"question": "HTTPS和HTTP协议有什么区别？",
+		"options": {
+			"A": "HTTPS是HTTP的复数",
+			"B": "一般情况下，HTTP用的是443端口，HTTPS用的是80端口",
+			"C": "HTTPS相比HTTP，加了TLS加密认证。",
+			"D": "现代主流浏览器一般会给HTTPS加上“安全”字样"
+		},
+		"correct_answer": "CD"
+	}
+}
