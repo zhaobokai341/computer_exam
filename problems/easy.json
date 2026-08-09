@@ -38,13 +38,13 @@
 		"analysis": "B站搜这个有人会告诉你"
 	},
 	"5": {
-		"question": "Linux以root权限执行`rm -rf /*`，Windows以Administractor权限执行`rd /s /q %systemdrive%\\`，在默认配置下，Windows删系统删得更彻底，对的吗？",
+		"question": "Linux以root权限执行`rm -rf /* --no-preserve-root`，Windows以Administractor权限执行`rd /s /q %systemdrive%\\`，在默认配置下，Windows删系统删得更彻底，对的吗？",
 		"options": {
 			"A": "对的",
 			"B": "错的"
 		},
 		"correct_answer": "B",
-		"analysis": "即使拥有Administractor权限，仍不是系统文件，删系统文件还是会出现大量的“拒绝访问”，并且Windows如果文件被占用，即使你拥有最高权限也不能删除。对比Linux，root权限是最高权限，几乎可以修改任何文件，并且如果删除文件，即使这个文件被占用，也会把文件指针改为0（不是直接删除文件，但也差不多），所以Linux删的更彻底，而不是Windows"
+		"analysis": "即使拥有Administractor权限，仍不是系统文件，删系统文件还是会出现大量的“拒绝访问”，并且Windows如果文件被占用，即使你拥有最高权限也不能删除。对比Linux，root权限是最高权限，几乎可以修改任何文件，并且如果删除文件，即使这个文件被占用，也会把文件指针改为0（不是直接删除文件，但也差不多），再加上`--no-preserve-root`解除安全限制，所以Linux删的更彻底，而不是Windows"
 	},
 	"6": {
 		"question": "153的35次方最后4位是多少",
