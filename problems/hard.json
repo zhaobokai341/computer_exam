@@ -1,1 +1,86 @@
-{}
+{
+	"1": {
+		"question": "You are given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\n\nYou can return the answer in any order. If you want to beat 100% in the aspect of time, What the algorithm you should use?",
+		"options": {
+			"A": "Brute Force",
+			"B": "Sorting + Binary Search + Linear Search",
+			"C": "Unordered Map",
+			"D": "Ordered Map"
+		},
+		"correct_answer": "C",
+		"analysis": "这是Leetcode上经典的两数之和：给你一个整数数组和目标值，求数组里面任意两个数之和能求这个目标数字的下标\n暴力破解就是双层遍历这个数组，然后判断值，时间复杂度为`O(n^2)`，数组排序+二分查找+线性查找，用二分快速查找两个数字是否能求出和，在用线性查找找出这两个数字的下标，时间复杂度约为`O(nlogn)`，有序哈希map和无序哈希map都能实现这个功能，但是有序哈希map增删改查平均是`O(logn)`，而无序哈希map平均情况是`O(1)`，但我们不用考虑有序，我们只需要遍历一次数组，把每个数值的差和当前数组的下标记录到map中，然后每次查询是否存在即可，在选择无序map，最坏时间复杂度是`O(n)`，所以答案故选C"
+	},
+	"2": {
+		"question": "You are Xiao Aba and just developed and launched my first website. A few days ago, there were only a few visitor. The website was running smoothly. But just a week later, a weel known blogger--@windows10-MSZ promoted your website. Suddenly, 10000 users accessed the site simultaneously. directly overwhelmed your website's server zone, face this case. You think a good idea: You prepared mutiple servers (mutiple different addresses), and let users choose a server to visit, and the trouble is solved. But for hide your server addresses to prevent attack. This way can't implement. And at this time, the best way is:",
+		"options": {
+			"A": "To provide multiple addresses for users, and configure Add the security protection for each server.",
+			"B": "Use Load Balancing.",
+			"C": "Develope new function, ignore it.",
+			"D": "Restrict partial users visit this website."
+		},
+		"correct_answer": "B",
+		"analysis": "在单台服务器资源不足时，可以增加服务器并配置网关，由网关把用户的请求动态转向不同的服务器节点，以缓解访问量巨大的问题。"
+	},
+	"3": {
+		"question": "What does the full name of \"REST\", which is a software architectural style",
+		"correct_answer": "Representational State Transfer"
+	},
+	"4": {
+		"question": "Translate `project code`, `production`, `stability`, `readability`, `maintainability`, `testable` to Chinese",
+		"options": {
+			"A": "项目代码,生产,稳定的,可读的,可维护的,可测试性",
+			"B": "工程代码,生产,稳定性,可读性,可维护性,可测试性",
+			"C": "工程代码,生产,稳定性,可读性,可维护性,可测试的",
+			"D": "项目代码,生产,稳定的,可读的,可维护的,可测试的"
+		},
+		"correct_answer": "C"
+	},
+	"5": {
+		"question": "What is the absolute maximum code point value permitted in the entire Unicode codespace (type hexadecimal, 0x as the prefix)?",
+		"correct_answer": "0x10FFFF"
+	},
+	"6": {
+		"question": "<video src=\"images/hard/EXE_introducing.mp4\" controls></video>\n\nRead this video, and according to context, judge which of following sentences are right?",
+		"options": {
+			"A": "convert the code in high-level to the final exe, It needs through compiler, assembler and linker",
+			"B": "The full name of \".exe\" is Executable.",
+			"C": "The executable must be contains DOS header, PE header and executable information and more.",
+			"D": "Every EXE must be contains a same string."
+		},
+		"correct_answer": "AD"
+	},
+	"7": {
+		"question": "Jin Ming was very happy today, the new house he bought at home will have to take the key, and there is a very spacious room for himself. What makes him even more happy is that his mother said to him yesterday: \"What items your room needs to buy, how to arrange, as long as you don't have more than N(N < 30000) yuan money.\" Early this morning, Jin Ming began to make a budget, but he wanted to buy too many things, will certainly exceed the mother's limit of N yuan. So he specified an important point for each item, divided into 5th class: denoted by the integer 1−5, and the 5th most important. He also found the price of each item (all integers and less than 10000) on the Internet. He hopes that the sum of the price and importance of each item will be the largest, without more than N yuan (which can be equal to N yuan).\nLet the price of the j item v[j], the importance of w[j], a total of k items, the number of j1, j2, ..., jk, the sum of the required is:\nv[j1]×w[j1]+v[j2]×w[j2]+...+v[jk]×w[jk]×w[jk].\nPlease help Jin Ming design a shopping list that meets the requirements. What the algorithm should be use to pass this question?",
+		"options": {
+			"A": "01 Backpack",
+			"B": "Complete Backpack",
+			"C": "Greedy",
+			"D": "Brute Force"
+		},
+		"correct_answer": "A",
+		"analsys": "由于数据量很大，暴力破解必超时，所以首先排除D，其次因为要求全局最优，贪心也排除，这里符合背包的特征：有物品选择且有限制，但由于物品只能选一次，所以用01背包。"
+	},
+	"8": {
+		"question": "A stuff is a free, open-source object-relational database management system. it is build for complex data structures, strict data integrity and advanced analytical queries. It is _______SQL? (First character is upper case, They are lower case remaining)",
+		"correct_answer": "Postgre"
+	},
+	"9": {
+		"question": "`گل‌نزن`的中文意思是什么？",
+		"options": {
+			"A": "科尔恰特",
+			"B": "经常错失进球良机的",
+			"C": "经常错失进球良机的球员",
+			"D": "经常取得进球良机的"
+		},
+		"correct_answer": "BC"
+	},
+	"10": {
+		"question": "About os/exec package on Go, which of following statements are right?",
+		"options": {
+			"A": "Can be execute external command",
+			"B": "Can be connected with a pipe command",
+			"C": "Need be process Standard Input and Output."
+		},
+		"correct_answer": "ABC"
+	}
+}

@@ -588,7 +588,7 @@
             nextBtn.classList.add('hidden');
 
             if (q.options) {
-                const correctAnswer = q.correct_answer.replace(/\s/g, '');
+                const correctAnswer = q.correct_answer;
                 const isMulti = correctAnswer.length > 1;
 
                 if (isMulti) {
@@ -658,7 +658,7 @@
             }
 
             isAnswered = true;
-            const correctAnswer = q.correct_answer.replace(/\s/g, '');
+            const correctAnswer = q.correct_answer;
             const isCorrect = userAnswer === correctAnswer;
 
             if (isCorrect) {
