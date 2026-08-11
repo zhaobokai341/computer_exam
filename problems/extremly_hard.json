@@ -1,1 +1,78 @@
-{}
+{
+	"1": {
+		"question": "Watch following video, complete True Or False Question. Type 'T' is true, Type 'F' is False. Using comma as separator（这是曾经小学给某位好基友出的部分题）\n<video src=\"images/extremly_hard/What_s_inside_a_.EXE_File.mp4\" controls></video>\n1.PC is so fast today, so we needn't optimzed the code.\n2.16-bit DOS can run modern executable directly and smoothly\n3.Compare with final EXE (after complied and generated the EXE), your code is a very small part os this\n4.@InkboxTools said that all file is just a bunch of data.\n5.During complie in C, the code has to become assembly first, then convert to the object code, finally run through a linker to reach the final executable. ",
+		"correct_answer": "F,F,T,F,T"
+	},
+	"2": {
+		"question": "In Linux Assembly x86 NASM, how to trigger system call?",
+		"options": {
+			"A": "syscall",
+			"B": "syscall 0x100",
+			"C": "call",
+			"D": "int 0x80"
+		},
+		"correct_answer": "D"
+	},
+	"3": {
+		"question": "What does plain text corresponding `ae82e9259ff70189f4d05d62805dcbad` md5 hash",
+		"options": {
+			"A": "One click Tri-Support",
+			"B": "one click tri-Support",
+			"C": "一键三连",
+			"D": "一件三联"
+		},
+		"correct_answer": "A"
+	},
+	"4": {
+		"question": "Which of the following operations will create a shallow copy of a dictionary?",
+		"options": {
+			"A": "dict.copy()",
+			"B": "dict(dict)",
+			"C": "dict[:]"
+		},
+		"correct_answer": "AB",
+		"analysis": "两种方式都能创建浅拷贝，字典没有切片操作。"
+	},
+	"5": {
+		"question": "What does the command which merge current branch and branch `114514 wahaha`(Use git, contains double quotation marks)",
+		"correct_answer": "git merge \"114514 wahaha\"",
+		"analsys": "`git merge`这个命令可以让任何分支合并到当前分支"
+	},
+	"6": {
+		"question": "![images/extremly_hard/hq720.webp](images/extremly_hard/hq720.webp)\nWhat does this video link coressponding this images (Youtube Watch link) (Contains URL protocol, Youtube domain and site)",
+		"correct_answer": "https://www.youtube.com/watch?v=JUFpjJrYW8w"
+	},
+	"7": {
+		"question": "A service sensitive to data integrity, how to prevent to lost all data of Redis after restart Redis.",
+		"options": {
+			"A": "do the backup manually",
+			"B": "A persistence solutions provided by Redis, which peroidically saves the complete in-memory data to hard disk",
+			"C": "Anothor persistence solutions provided by Redis, which record every write operation",
+			"D": "This problem has no solutions"
+		},
+		"correct_answer": "C",
+		"analysis": "题目描述，一个对数据完整性敏感的服务，如何防止在Redis重启后数据丢失。\n首先手动备份肯定不现实了，因为数据都会随时变动，B选项说的是RDB快照——定期把数据备份到硬盘中，但由于是定期，无法实时备份最新数据，而他是对数据完整性比较敏感，而AOF把每次操作都记录下来，恢复虽然慢，但起码保住了完整性，所以故选C"
+	},
+	"8": {
+		"question": "Is this video a correct method to image hijacking?\n<video src=\"images/extremly_hard/Windows_image_hijack.m4s\" controls></video>",
+		"options": {
+			"A": "Incorrect",
+			"B": "Correct"
+		},
+		"correct_answer": "A"
+	},
+	"9": {
+		"question": "In log analysis, the query error log for the last 1 hour should be used",
+		"options": {
+			"A": "WHERE log_time > NOW() - INTERVAL 1 HOUR",
+			"B": "WHERE log_time BETWEEN ...",
+			"C": "Depending on the type of time column"
+		},
+		"correct_answer": "ABC",
+		"analysis": "不同写法效果相同，关键确保时间列有索引。"
+	},
+	"10": {
+		"question": "```\nmov     eax, [rbp+var_4]\nmovsxd  rdx, eax\nimul    rdx, 38E38E39h\nshr     rdx, 20h\nsar     edx, 2\nsar     eax, 1Fh\nsub     edx, eax```\nIf var_4 is 100, then rdx is ___, if var_4 is 17, then rdx is ___ (Using space as sperator for each question)",
+		"correct_answer": "5,0"
+	}
+}
