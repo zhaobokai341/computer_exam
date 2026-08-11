@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>计算机模拟考试系统</title>
+    <title>计算🐔/姬考试</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * {
@@ -453,7 +453,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>计算机模拟考试系统</h1>
+        <h1>计算🐔/姬考试</h1>
 
         <div id="difficultyScreen" class="difficulty-select">
             <h2>请选择难度等级</h2>
@@ -461,7 +461,7 @@
                 <button class="diff-btn easy" onclick="startQuiz('easy')">简单</button>
                 <button class="diff-btn medium" onclick="startQuiz('medium')">中等</button>
                 <button class="diff-btn hard" onclick="startQuiz('hard')">困难</button>
-                <button class="diff-btn extremly_hard" onclick="startQuiz('extremly_hard')">极难</button>
+                <button class="diff-btn extremly_hard" onclick="startQuiz('extremly_hard')">地狱</button>
             </div>
             <div id="loadingMsg" class="loading hidden">加载中...</div>
             <div id="errorMsg" class="error-message hidden"></div>
@@ -712,15 +712,15 @@
 
             let message = '';
             if (score === 100) {
-                message = '满分！太棒了！';
+                message = '满分！太棒了！送你个💥🐔';
             } else if (score >= 80) {
-                message = '优秀！继续保持！';
+                message = '优秀！继续保持！给你画个🫓';
             } else if (score >= 60) {
                 message = '及格了，还可以更好！';
             } else if (score >= 40) {
-                message = '还需努力！';
+                message = '还需努力！给你个坤安慰一下';
             } else {
-                message = '加油，多复习再来！';
+                message = '加油，多复习再来！给你个坤安慰一下';
             }
             document.getElementById('resultMessage').textContent = message;
 
