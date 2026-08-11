@@ -84,5 +84,26 @@
 			"D": "现代主流浏览器一般会给HTTPS加上“安全”字样"
 		},
 		"correct_answer": "CD"
+	},
+	"11": {
+		"question": "…请选D",
+		"options": {
+			"A": "2019",
+			"B": "千万别选我！",
+			"C": "2233",
+			"D": "选我才是正确的！（doge）"
+		},
+		"correct_answer": "D"
+	},
+	"12": {
+		"question": "Windows PE Commander如何让系统“快速重启”？（强制销毁会话，进入登录界面）",
+		"options": {
+			"A": "pecmd kill pecmd",
+			"B": "pecmd kill winlogon",
+			"C": "pecmd kill svchost",
+			"D": "pecmd kill bilibili.com"
+		},
+		"correct_answer": "B",
+		"analysis": "Windows PE Commander是一个Windows PE下的命令行工具，pecmd kill winlogon可以强制销毁会话，进入登录界面"
 	}
 }
