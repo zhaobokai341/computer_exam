@@ -72,7 +72,7 @@
 		"analysis": "不同写法效果相同，关键确保时间列有索引。"
 	},
 	"10": {
-		"question": "```\nmov     eax, [rbp+var_4]\nmovsxd  rdx, eax\nimul    rdx, 38E38E39h\nshr     rdx, 20h\nsar     edx, 2\nsar     eax, 1Fh\nsub     edx, eax```\nIf var_4 is 100, then rdx is ___, if var_4 is 17, then rdx is ___ (Using space as sperator for each question)",
+		"question": "```\nmov     eax, [rbp+var_4]\nmovsxd  rdx, eax\nimul    rdx, 38E38E39h\nshr     rdx, 20h\nsar     edx, 2\nsar     eax, 1Fh\nsub     edx, eax\n```\nIf var_4 is 100, then rdx is ___, if var_4 is 17, then rdx is ___ (Using space as sperator for each question)",
 		"correct_answer": "5,0"
 	}
 }
