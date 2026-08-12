@@ -58,7 +58,7 @@
 			"D": "Brute Force"
 		},
 		"correct_answer": "A",
-		"analsys": "由于数据量很大，暴力破解必超时，所以首先排除D，其次因为要求全局最优，贪心也排除，这里符合背包的特征：有物品选择且有限制，但由于物品只能选一次，所以用01背包。"
+		"analysis": "由于数据量很大，暴力破解必超时，所以首先排除D，其次因为要求全局最优，贪心也排除，这里符合背包的特征：有物品选择且有限制，但由于物品只能选一次，所以用01背包。"
 	},
 	"8": {
 		"question": "A stuff is a free, open-source object-relational database management system. it is build for complex data structures, strict data integrity and advanced analytical queries. It is _______SQL? (First character is upper case, They are lower case remaining)",
@@ -82,5 +82,10 @@
 			"C": "Need be process Standard Input and Output."
 		},
 		"correct_answer": "ABC"
+	},
+	"11": {
+		"question": "π=? (only complete answer)",
+		"correct_answer": "π",
+		"analysis": "你就说是不是吧"
 	}
 }
