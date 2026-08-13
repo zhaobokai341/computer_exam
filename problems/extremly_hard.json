@@ -1,7 +1,7 @@
 {
 	"1": {
 		"question": "Watch following video, complete True Or False Question. Type 'T' is true, Type 'F' is False. Using comma as separator（这是曾经小学给某位好基友出的部分题）\n<video src=\"images/extremly_hard/What_s_inside_a_.EXE_File.mp4\" controls></video>\n1.PC is so fast today, so we needn't optimzed the code.\n2.16-bit DOS can run modern executable directly and smoothly\n3.Compare with final EXE (after complied and generated the EXE), your code is a very small part os this\n4.@InkboxTools said that all file is just a bunch of data.\n5.During complie in C, the code has to become assembly first, then convert to the object code, finally run through a linker to reach the final executable. ",
-		"correct_answer": "T,F,T,F,T"
+		"correct_answer": "F,F,T,F,T"
 	},
 	"2": {
 		"question": "In Linux Assembly x86 NASM, how to trigger system call?",
